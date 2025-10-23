@@ -1,0 +1,74 @@
+erDiagram
+    direction LR
+
+    PARTIDO ||--o{ DEPUTADO : possui
+    LEGISLATURA ||--o{ DEPUTADO : inclui
+    LEGISLATURA ||--o{ FRENTE : inclui
+    ORGAO ||--o{ VOTACAO : realiza
+    PROPOSICAO }o..o{ VOTACAO : referenciada_em
+
+    DEPUTADO {
+        int id PK
+        string nome
+        string siglaPartido FK
+        string uriPartido
+        string siglaUf
+        int idLegislatura FK
+        string email
+        string urlFoto
+        string uri
+    }
+
+    PARTIDO {
+        int id PK
+        string sigla UK
+        string nome
+        string uri
+    }
+
+    FRENTE {
+        int id PK
+        string titulo
+        int idLegislatura FK
+        string uri
+    }
+
+    LEGISLATURA {
+        int id PK
+    }
+
+    ORGAO {
+        int id PK
+        string sigla UK
+        string nome
+        string apelido
+        int codTipoOrgao
+        string tipoOrgao
+        string nomePublicacao
+        string nomeResumido
+        string uri
+    }
+
+    PROPOSICAO {
+        int id PK
+        string siglaTipo
+        int codTipo
+        int numero
+        int ano
+        string ementa
+        string uri
+    }
+
+    VOTACAO {
+        string id PK
+        date data
+        datetime dataHoraRegistro
+        string siglaOrgao FK
+        string uriOrgao FK
+        string uriEvento
+        string proposicaoObjeto
+        string uriProposicaoObjeto FK
+        string descricao
+        int aprovacao
+        string uri
+    }

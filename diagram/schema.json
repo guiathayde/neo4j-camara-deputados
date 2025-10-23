@@ -1,0 +1,105 @@
+{
+  "entities": {
+    "Deputado": {
+      "description": "Parlamentar da Câmara dos Deputados",
+      "primaryKey": "id",
+      "attributes": {
+        "id": "integer",
+        "nome": "string",
+        "siglaPartido": "string",
+        "uriPartido": "string",
+        "siglaUf": "string",
+        "idLegislatura": "integer",
+        "email": "string",
+        "urlFoto": "string",
+        "uri": "string"
+      },
+      "foreignKeys": {
+        "siglaPartido": "Partido.sigla",
+        "idLegislatura": "Legislatura.id"
+      }
+    },
+    "Partido": {
+      "description": "Partido político",
+      "primaryKey": "id",
+      "uniqueKeys": ["sigla"],
+      "attributes": {
+        "id": "integer",
+        "sigla": "string",
+        "nome": "string",
+        "uri": "string"
+      }
+    },
+    "Frente": {
+      "description": "Frente parlamentar temática",
+      "primaryKey": "id",
+      "attributes": {
+        "id": "integer",
+        "titulo": "string",
+        "idLegislatura": "integer",
+        "uri": "string"
+      },
+      "foreignKeys": {
+        "idLegislatura": "Legislatura.id"
+      }
+    },
+    "Legislatura": {
+      "description": "Identificador de legislatura (período parlamentar)",
+      "primaryKey": "id",
+      "attributes": {
+        "id": "integer"
+      }
+    },
+    "Orgao": {
+      "description": "Órgão / Comissão / Plenário",
+      "primaryKey": "id",
+      "uniqueKeys": ["sigla"],
+      "attributes": {
+        "id": "integer",
+        "sigla": "string",
+        "nome": "string",
+        "apelido": "string",
+        "codTipoOrgao": "integer",
+        "tipoOrgao": "string",
+        "nomePublicacao": "string",
+        "nomeResumido": "string|null",
+        "uri": "string"
+      }
+    },
+    "Proposicao": {
+      "description": "Proposição legislativa (PL, PEC, etc.)",
+      "primaryKey": "id",
+      "attributes": {
+        "id": "integer",
+        "siglaTipo": "string",
+        "codTipo": "integer",
+        "numero": "integer",
+        "ano": "integer",
+        "ementa": "string",
+        "uri": "string"
+      }
+    },
+    "Votacao": {
+      "description": "Evento de votação",
+      "primaryKey": "id",
+      "attributes": {
+        "id": "string",
+        "data": "date",
+        "dataHoraRegistro": "datetime",
+        "siglaOrgao": "string",
+        "uriOrgao": "string",
+        "uriEvento": "string",
+        "proposicaoObjeto": "string|null",
+        "uriProposicaoObjeto": "string|null",
+        "descricao": "string",
+        "aprovacao": "integer|null",
+        "uri": "string"
+      },
+      "foreignKeys": {
+        "siglaOrgao": "Orgao.sigla",
+        "uriOrgao": "Orgao.uri",
+        "uriProposicaoObjeto": "Proposicao.uri"
+      }
+    }
+  }
+}

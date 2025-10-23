@@ -1,0 +1,59 @@
+{
+  "relationships": [
+    {
+      "from": "Partido",
+      "to": "Deputado",
+      "type": "possui",
+      "cardinality": {
+        "from": "1",
+        "to": "0..N"
+      },
+      "identifying": false,
+      "fk": "Deputado.siglaPartido -> Partido.sigla"
+    },
+    {
+      "from": "Legislatura",
+      "to": "Deputado",
+      "type": "inclui",
+      "cardinality": {
+        "from": "1",
+        "to": "0..N"
+      },
+      "identifying": false,
+      "fk": "Deputado.idLegislatura -> Legislatura.id"
+    },
+    {
+      "from": "Legislatura",
+      "to": "Frente",
+      "type": "inclui",
+      "cardinality": {
+        "from": "1",
+        "to": "0..N"
+      },
+      "identifying": false,
+      "fk": "Frente.idLegislatura -> Legislatura.id"
+    },
+    {
+      "from": "Orgao",
+      "to": "Votacao",
+      "type": "realiza",
+      "cardinality": {
+        "from": "1",
+        "to": "0..N"
+      },
+      "identifying": false,
+      "fk": "Votacao.siglaOrgao -> Orgao.sigla"
+    },
+    {
+      "from": "Proposicao",
+      "to": "Votacao",
+      "type": "referenciada_em",
+      "cardinality": {
+        "from": "0..N",
+        "to": "0..1"
+      },
+      "identifying": false,
+      "fk": "Votacao.uriProposicaoObjeto -> Proposicao.uri"
+    }
+  ]
+}

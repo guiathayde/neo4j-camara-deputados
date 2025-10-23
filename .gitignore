@@ -1,0 +1,9 @@
+venv
+.env
+.DS_Store
+__pycache__/
+relatorio.aux
+relatorio.log
+relatorio.out
+relatorio.toc
+*.my.md
