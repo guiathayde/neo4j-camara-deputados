@@ -2,6 +2,10 @@
 
 https://colab.research.google.com/drive/17Cnqr6ztRZsKwyipFVyQ7INCbIP3_UHI?usp=sharing
 
+## Diagrama
+
+https://www.mermaidchart.com/d/a3f8304a-cbf5-4549-83bb-0c25153a8dc3
+
 ## Como rodar
 
 ### Pré-requisitos
